@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Alma y Gracia — estilo con alma, elegancia con gracia. Descubre nuestra colección de zapatos." />
+  <title>Alma y Gracia | Zapatos con estilo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="topline">Un par especial para cada historia ✦</div>
+  <header class="header">
+    <a class="logo" href="#inicio" aria-label="Alma y Gracia, inicio"><span class="logo-mark">A<span class="amp">&</span>G</span><span class="logo-name">ALMA Y GRACIA<small>CALZADO & ESTILO</small></span></a>
+    <nav class="nav" aria-label="Principal"><a href="#coleccion">Colección</a><a href="#nosotros">Nuestra esencia</a><a href="#contacto">Contacto</a></nav>
+    <div class="header-actions"><button id="cartButton" class="icon-btn" aria-label="Ver mi selección">♡ <span id="cartCount">0</span></button><button id="adminButton" class="admin-link" aria-label="Administración">Administrar</button></div>
+  </header>
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content"><div class="eyebrow">BIENVENIDA A TU NUEVO ESTILO</div><h1>Camina con <em>alma.</em><br />Brilla con <em>gracia.</em></h1><p>Estilo con alma, elegancia con gracia.</p><a class="primary-button" href="#coleccion">Explorar colección <span>↗</span></a><div class="hero-foot">Elegancia en cada paso <span>✦</span> Detalles que enamoran</div></div>
+      <div class="hero-art"><div class="hero-ring"><img src="assets/zapato.svg" alt="Ilustración de zapato en tono vino" /></div><div class="vertical-word">ALMA Y GRACIA • CALZADO</div><div class="art-card"><span>✦</span> Tu estilo cuenta una historia.</div></div>
+    </section>
+    <div class="qualities"><span>✧ ESTILO ÚNICO</span><span>✧ ELEGANCIA ATEMPORAL</span><span>✧ DETALLES CON ENCANTO</span></div>
+    <section id="coleccion" class="catalog section"><div class="section-head"><div><span class="eyebrow">DESCUBRE TUS FAVORITOS</span><h2>Nuestra <em>colección</em></h2><p>Encuentra ese par que habla de ti.</p></div><div class="filters"><label class="sr-only" for="search">Buscar zapatos</label><input id="search" type="search" placeholder="Buscar zapatos..." /><label class="sr-only" for="filter">Filtrar categoría</label><select id="filter"><option value="">Todas las categorías</option><option>Stilettos</option><option>Tacones</option><option>Baletas</option><option>Balerinas</option><option>Sandalias</option><option>Botas</option><option>Tenis</option><option>Otros</option></select></div></div>
+      <div id="products" class="products"></div><p id="catalogMessage" class="empty" hidden></p>
+    </section>
+    <section id="nosotros" class="story"><div class="story-flower">✿</div><div><span class="eyebrow">NUESTRA ESENCIA</span><h2>Más que zapatos,<br /><em>una forma de sentir.</em></h2><p>En Alma y Gracia creemos que la verdadera elegancia nace de ser tú misma. Creamos un espacio para descubrir zapatos que acompañen cada momento y expresen tu esencia.</p><a href="#coleccion" class="text-link">Descubrir mis favoritos →</a></div></section>
+    <section id="contacto" class="contact section"><div class="eyebrow">ESTAMOS PARA TI</div><h2>¿Encontraste tu <em>par ideal?</em></h2><p>Escríbenos y te ayudamos a elegir.</p><div class="contact-actions"><a id="whatsappLink" class="primary-button" href="#contacto">Consultar por WhatsApp ↗</a><a id="instagramLink" class="outline-button" href="#contacto" hidden target="_blank" rel="noopener noreferrer">Ver Instagram ↗</a></div></section>
+  </main>
+  <footer><div class="footer-brand">ALMA Y GRACIA <span>✦</span></div><p>Estilo con alma, elegancia con gracia.</p><small>© <span id="year"></span> Alma y Gracia. Todos los derechos reservados.</small></footer>
+
+  <div id="overlay" class="overlay" hidden></div>
+  <aside id="cartPanel" class="drawer" aria-label="Mis favoritos" aria-hidden="true"><div class="panel-head"><h3>Mis favoritos <span>♡</span></h3><button class="close-btn" data-close aria-label="Cerrar">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-footer"><div class="total">Total estimado <strong id="cartTotal">$0</strong></div><button class="primary-button full" id="orderButton">Consultar pedido por WhatsApp ↗</button><small>Los precios y la disponibilidad se confirman al contactar la tienda.</small></div></aside>
+
+  <aside id="adminPanel" class="drawer admin-drawer" aria-label="Panel de administración" aria-hidden="true"><div class="panel-head"><h3>Panel de administración</h3><button class="close-btn" data-close aria-label="Cerrar">×</button></div>
+    <div id="adminLogin"><p class="muted">Inicia sesión para añadir o editar productos. Solo los administradores autorizados pueden modificar el catálogo.</p><form id="loginForm"><label>Correo electrónico<input id="loginEmail" type="email" required autocomplete="email" /></label><label>Contraseña<input id="loginPassword" type="password" required autocomplete="current-password" /></label><button class="primary-button full" type="submit">Entrar</button></form><p id="loginMessage" class="feedback" role="status"></p></div>
+    <div id="adminWorkspace" hidden><div class="admin-top"><span id="loggedEmail"></span><button id="logoutButton" class="small-button">Cerrar sesión</button></div><h4 id="formTitle">Agregar un producto</h4><form id="productForm"><input id="productId" type="hidden" /><label>Nombre del zapato *<input id="productName" type="text" maxlength="120" required placeholder="Ej. Tacón Aurora vino" /></label><label>Categoría *<select id="productCategory" required><option>Stilettos</option><option>Tacones</option><option>Baletas</option><option>Balerinas</option><option>Sandalias</option><option>Botas</option><option>Tenis</option><option>Otros</option></select></label><label>Precio en COP *<input id="productPrice" type="number" min="0" step="100" required placeholder="Ej. 159900" /></label><label>Tallas disponibles<input id="productSizes" type="text" placeholder="Ej. 35, 36, 37, 38" /></label><label>Descripción<textarea id="productDescription" rows="3" placeholder="Material, altura de tacón, color..."></textarea></label><label>Foto del zapato (JPG, PNG o WebP, máximo 5 MB)<input id="productImage" type="file" accept="image/jpeg,image/png,image/webp" /></label><p class="muted">Al editar, deja la foto vacía para conservar la actual.</p><label class="check"><input id="productFeatured" type="checkbox" /> Destacar en el catálogo</label><label class="check"><input id="productAvailable" type="checkbox" checked /> Mostrar en el catálogo</label><button id="saveButton" class="primary-button full" type="submit">Guardar producto</button><button id="cancelEdit" class="small-button" type="button" hidden>Cancelar edición</button></form><p id="adminMessage" class="feedback" role="status"></p><h4>Productos registrados</h4><div id="adminList" class="admin-list"></div></div>
+  </aside>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
